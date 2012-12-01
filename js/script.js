@@ -46,7 +46,7 @@ jQuery(document).ready(function() {
   };
 
   // Login with Facebook integration
-  FB.init(
+  FB.init({
     appId      : '453184598071361', // App ID
     channelUrl : '/channel.html', // Channel File
     status     : true, // check login status

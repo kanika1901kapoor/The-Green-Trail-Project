@@ -26,15 +26,19 @@ jQuery(document).ready(function() {
     console.warn("No geolocation support.");
   }
 
+  var populateUserCredentials = function() {
+    FB.api('/me', function(response) {
+      jQuery("#facebook-avatar").attr("src", "https://graph.facebook.com/" + response.username + "/picture");
+      jQuery("#facebook-username").html(response.name);
+    });
+  };
+
   var login = function() {
     FB.login(function(response) {
         if (response.authResponse) {
             console.dir(response);
 
-            FB.api('/me', function(response) {
-              //jQuery("#facebook-avatar").attr("src", );
-              jQuery("#facebook-username").html(response.name);
-            });
+            populateUserCredentials();
         } else {
             // cancelled
             console.error("Cancelled by user.");
@@ -43,7 +47,7 @@ jQuery(document).ready(function() {
   };
 
   // Login with Facebook integration
-  FB.init({
+  FB.init(
     appId      : '453184598071361', // App ID
     channelUrl : '/channel.html', // Channel File
     status     : true, // check login status
@@ -54,6 +58,7 @@ jQuery(document).ready(function() {
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
         // connected
+        populateUserCredentials();
     } else if (response.status === 'not_authorized') {
         // not_authorized
         login();

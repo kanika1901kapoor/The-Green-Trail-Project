@@ -77,10 +77,11 @@
       <div class="span6">
         <form id="lh-form" class="well form-horizontal" method="post" action="http://192.168.10.154:8081/api/upload">
           <div class="control-group">
-            <label class="control-label" for="lh-longitude"><i class="icon-globe"></i> Where are you?</label>
+            <label class="control-label" for="lh-map"><i class="icon-globe"></i> Where are you?</label>
             <div class="controls">
-              <input id="lh-latitude" name="latitude" type="text" class="latitude"></input>
-              <input id="lh-longitude" name="longitude" type="text" class="longitude"></input>
+              <div id="lh-map"></div>
+              <input id="lh-latitude" name="latitude" type="hidden" class="latitude"></input>
+              <input id="lh-longitude" name="longitude" type="hidden" class="longitude"></input>
               <span class="help-inline"></span>
               <div class="help-block"></div>
             </div>
@@ -146,6 +147,7 @@
 <script src="js/libs/bootstrap/carousel.js"></script>
 <script src="js/libs/jeoquery.js"></script>
 <script src="http://connect.facebook.net/en_US/all.js"></script>
+<script src="js/libs/jquery-gomap.js"></script>
 
 <script src="js/script.js"></script>
 <!-- end scripts-->

@@ -15,12 +15,20 @@ jQuery(document).ready(function() {
 
 	jQuery("#carousel").carousel();
 
-  jQuery("#lh-location").jeoCityAutoComplete();
+  //jQuery("#lh-location").jeoCityAutoComplete();
 
   if (Modernizr.geolocation) {
     navigator.geolocation.getCurrentPosition(function(location) {
       jQuery(".latitude").val(location.coords.latitude);
       jQuery(".longitude").val(location.coords.longitude);
+
+      jQuery("#lh-map").goMap({
+        markers: [{
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude,
+            title: ''
+        }]
+      });
     });
   } else {
     console.warn("No geolocation support.");

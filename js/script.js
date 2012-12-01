@@ -39,7 +39,7 @@ jQuery(document).ready(function() {
   // Login with Facebook integration
   FB.init({
     appId      : '453184598071361', // App ID
-    channelUrl : 'http://localhost:8080/channel.html', // Channel File
+    //channelUrl : 'http://localhost:8080/channel.html', // Channel File
     status     : true, // check login status
     cookie     : true, // enable cookies to allow the server to access the session
     xfbml      : true  // parse XFBML

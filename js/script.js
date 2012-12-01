@@ -37,7 +37,6 @@ jQuery(document).ready(function() {
     FB.login(function(response) {
         if (response.authResponse) {
             console.dir(response);
-
             populateUserCredentials();
         } else {
             // cancelled

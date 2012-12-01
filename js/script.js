@@ -30,6 +30,11 @@ jQuery(document).ready(function() {
     FB.login(function(response) {
         if (response.authResponse) {
             console.dir(response);
+
+            FB.api('/me', function(response) {
+              //jQuery("#facebook-avatar").attr("src", );
+              jQuery("#facebook-username").html(response.name);
+            });
         } else {
             // cancelled
             console.error("Cancelled by user.");

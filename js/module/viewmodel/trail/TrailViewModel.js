@@ -31,6 +31,7 @@ function(
 		self.shoe = ko.observable(false);
 		self.backpack = ko.observable(false);
 		self.postedImageUrl = ko.observable("http://placehold.it/500");
+		self.fbShare = ko.observable();
 
 
 		self.applyMappings = function(value) {

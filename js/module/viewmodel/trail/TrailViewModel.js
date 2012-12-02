@@ -30,6 +30,8 @@ function(
 		self.shelter = ko.observable(false);
 		self.shoe = ko.observable(false);
 		self.backpack = ko.observable(false);
+		self.postedImageUrl = ko.observable("http://placehold.it/500");
+
 
 		self.applyMappings = function(value) {
 			debug.log("model.trial.TrailModel", "applyMappings", "Applying mappings with", value);
@@ -133,7 +135,49 @@ function(
 
 
 		self.uploadTrail = function() {
-			debug.log("viewmodel.Trail.TrailViewModel", "uploadTrail", "Saving Trails data.", self.selectedTrail());
+			debug.log("viewmodel.Trail.TrailViewModel", "uploadTrail", "Saving Trails data.", self);
+
+
+	    var formData = new FormData($('#lh-form')[0]);
+
+	    debug.log("viewmodel.Trail.TrailViewModel", "uploadTrail", "Sending data...", formData);
+
+	    $.ajax({
+	        url: 'http://192.168.10.154:8081/api/upload',  //server script to process data
+	        type: 'POST',
+	        xhr: function() {  // custom xhr
+	            myXhr = $.ajaxSettings.xhr();
+	            if(myXhr.upload){ // check if upload property exists
+	                myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // for handling the progress of the upload
+	            }
+	            return myXhr;
+	        },
+	        //Ajax events
+	        beforeSend: function(jqXHR, settings) {
+	        	debug.log("beforeSend", jqXHR, settings);
+				  },
+				  complete: function(jqXHR, settings) {
+				  	debug.log("complete", jqXHR, settings);
+				  },
+				  error: function(jqXHR, textStatus, errorThrown) {
+				  	debug.log("error", jqXHR, textStatus, errorThrown);
+				  },
+				  success: function(data, textStatus, jqXHR) {
+				  	debug.log("logsuccess", data, textStatus, jqXHR);
+
+				  	// Take the image
+				  	self.postedImageUrl(data.flickLink);
+
+				  	// Show modal dialog
+				  	$('#myModal').modal('show');
+				  },
+	        // Form data
+	        data: formData,
+	        //Options to tell JQuery not to process data or worry about content-type
+	        cache: false,
+	        contentType: false,
+	        processData: false
+	    });
 		};
 
 		self.initialize();

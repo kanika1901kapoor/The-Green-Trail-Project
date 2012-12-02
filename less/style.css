@@ -10065,12 +10065,12 @@ html.lt-ie9 body {
   background-color: transparent\9;
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffffff, endColorstr=#ffffffff)";
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffffff, endColorstr=#ffffffff);
-  background-image: url("../img/common/bghaze.png"), -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 1500, color-stop(0%, #88ad00), color-stop(100%, #f9ffe0));
-  background-image: url("../img/common/bghaze.png"), -webkit-radial-gradient(bottom center, #88ad00, #f9ffe0 800px);
-  background-image: url("../img/common/bghaze.png"), -moz-radial-gradient(bottom center, #88ad00, #f9ffe0 800px);
-  background-image: url("../img/common/bghaze.png"), -o-radial-gradient(bottom center, #88ad00, #f9ffe0 800px);
-  background-image: url("../img/common/bghaze.png"), -ms-radial-gradient(bottom center, #88ad00, #f9ffe0 800px);
-  background-image: url("../img/common/bghaze.png"), radial-gradient(bottom center, #88ad00, #f9ffe0 800px);
+  background-image: url("../img/common/bghaze.png"), -webkit-gradient(radial, 50% 0%, 0, 50% 0%, 1500, color-stop(0%, #f9ffe0), color-stop(100%, #88ad00));
+  background-image: url("../img/common/bghaze.png"), -webkit-radial-gradient(bottom center, #f9ffe0, #88ad00 800px);
+  background-image: url("../img/common/bghaze.png"), -moz-radial-gradient(bottom center, #f9ffe0, #88ad00 800px);
+  background-image: url("../img/common/bghaze.png"), -o-radial-gradient(bottom center, #f9ffe0, #88ad00 800px);
+  background-image: url("../img/common/bghaze.png"), -ms-radial-gradient(bottom center, #f9ffe0, #88ad00 800px);
+  background-image: url("../img/common/bghaze.png"), radial-gradient(bottom center, #f9ffe0, #88ad00 800px);
   background-repeat: repeat;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
   -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);

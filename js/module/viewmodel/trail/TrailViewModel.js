@@ -185,7 +185,8 @@ function(
   												"redirect_uri=about:blank"
 
 
-				  	self.postedImageUrl(fbShare);
+				  	self.fbShare(fbShare);
+				  	self.postedImageUrl(data.data.flickLink);
 
 				  	debug.log("aft self.postedImageUrl()", self.postedImageUrl(), "data", data);
 

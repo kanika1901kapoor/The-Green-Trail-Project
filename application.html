@@ -80,8 +80,7 @@
             <label class="control-label" for="lh-map"><i class="icon-globe"></i> Where are you?</label>
             <div class="controls">
               <div id="lh-map"></div>
-              <input id="lh-latitude" name="latitude" type="hidden" class="latitude"></input>
-              <input id="lh-longitude" name="longitude" type="hidden" class="longitude"></input>
+
               <span class="help-inline"></span>
               <div class="help-block"></div>
             </div>
@@ -90,7 +89,7 @@
           <div class="control-group">
             <label class="control-label" for="lh-description"><i class="icon-user"></i> What did you see?</label>
             <div class="controls">
-              <textarea id="lh-description" name="description" type="text" placeholder="Eg. Lots of garbage at Nandi Hills!" title="Please type some description."></textarea>
+              <textarea data-bind="value: trailViewModel.description" id="lh-description" name="description" type="text" placeholder="Eg. Lots of garbage at Nandi Hills!" title="Please type some description."></textarea>
               <span class="help-inline"></span>
               <span class="help-block"></span>
             </div>
@@ -104,16 +103,22 @@
               <span class="help-block"></span>
             </div>
           </div>
-          
+
           <div class="control-group">
-            <label class="control-label" for="lh-image"><i class="icon-tag"></i> Mark it!</label>
+            <label class="control-label" for="lh-checkbox"><i class="icon-tag"></i> Mark it!</label>
             <div class="controls">
-              <input type="checkbox" name="stuff" value="Bottle"> I took my backpack<br>
-              <input type="checkbox" name="stuff" value="Backpack"> I took my bottle<br>
+              <ul class="horizontal-list">
+                <li data-bind="click: trailViewModel.toggleBottle, css: { selected: trailViewModel.bottle() === true }" class="trail-item icon-bottle"></li>
+                <li data-bind="click: trailViewModel.toggleBackpack, css: { selected: trailViewModel.backpack() === true }" class="trail-item icon-backpack"></li>
+                <li data-bind="click: trailViewModel.toggleMedicine, css: { selected: trailViewModel.medicine() === true }" class="trail-item icon-medicine"></li>
+                <li data-bind="click: trailViewModel.toggleShelter, css: { selected: trailViewModel.shelter() === true }" class="trail-item icon-shelter"></li>
+                <li data-bind="click: trailViewModel.toggleShoe, css: { selected: trailViewModel.shoe() === true }" class="trail-item icon-shoe"></li>
+                <li data-bind="click: trailViewModel.toggleClothing, css: { selected: trailViewModel.clothing() === true }" class="trail-item icon-clothing"></li>
+              </ul>
               <span class="help-inline"></span>
               <span class="help-block"></span>
             </div>
-          </div> 
+          </div>
 
           <div class="form-actions">
             <button type="reset" class="btn"><i class="icon-remove"></i> Clear</button>

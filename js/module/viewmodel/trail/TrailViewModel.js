@@ -60,6 +60,47 @@ function(
 		  }
 		};
 
+	var populateUserCredentials = function() {
+    FB.api('/me', function(response) {
+      jQuery("#facebook-avatar").attr("src", "https://graph.facebook.com/" + response.username + "/picture");
+      jQuery("#facebook-username").html(response.name);
+    });
+  };
+
+  var login = function() {
+    FB.login(function(response) {
+        if (response.authResponse) {
+            console.dir(response);
+            populateUserCredentials();
+        } else {
+            // cancelled
+            console.error("Cancelled by user.");
+        }
+    });
+  };
+
+  // Login with Facebook integration
+  FB.init({
+    appId      : '453184598071361', // App ID
+    channelUrl : '/channel.html', // Channel File
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    xfbml      : true  // parse XFBML
+  });
+
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+        // connected
+        populateUserCredentials();
+    } else if (response.status === 'not_authorized') {
+        // not_authorized
+        login();
+    } else {
+        // not_logged_in
+        login();
+    }
+  });
+
 		self.toggleBottle = function() {
 			debug.log("Toggling Bottle...", self);
 			self.bottle(!self.bottle());

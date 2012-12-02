@@ -183,7 +183,7 @@ function(
   												"name=The%20Green%20Trails%20Project&" +
   												"caption=I%20was%20a%20green%20trail%20contributor!&" +
   												"description=I%20was%20a%20green%20trail%20contributor!&" +
-  												"redirect_uri=about:blank"
+  												"redirect_uri=http://kanika1901kapoor.github.com/The-Green-Trail-Project/application.html"
 
 
 				  	self.fbShare(fbShare);

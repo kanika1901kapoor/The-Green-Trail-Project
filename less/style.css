@@ -10186,6 +10186,9 @@ ul.horizontal-list li {
   width: 100px;
   height: 91px;
 }
+img.fb-share-image {
+  width: 100%;
+}
 /* Footer style rules */
 footer .logo {
   background: url(../img/common/logo-footer.png) no-repeat;

@@ -181,7 +181,7 @@ function(
   												"link=http://kanika1901kapoor.github.com/The-Green-Trail-Project/application.html&" +
   												"picture=" + data.data.flickLink + "&" +
   												"name=The%20Green%20Trails%20Project&" +
-  												"caption=I%20was%20a%20green%20trail%20contributor!&" +
+  												"caption=" + data.data.flickLink + "&" +
   												"description=I%20was%20a%20green%20trail%20contributor!&" +
   												"redirect_uri=http://kanika1901kapoor.github.com/The-Green-Trail-Project/application.html"
 

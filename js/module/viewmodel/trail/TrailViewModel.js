@@ -138,7 +138,8 @@ function(
 			debug.log("viewmodel.Trail.TrailViewModel", "uploadTrail", "Saving Trails data.", self);
 
 
-	    var formData = new FormData($('#lh-form')[0]);
+	    var formData = new FormData($('#lh-form')[0]),
+	    		myXhr;
 
 	    debug.log("viewmodel.Trail.TrailViewModel", "uploadTrail", "Sending data...", formData);
 
@@ -148,16 +149,22 @@ function(
 	        xhr: function() {  // custom xhr
 	            myXhr = $.ajaxSettings.xhr();
 	            if(myXhr.upload){ // check if upload property exists
-	                myXhr.upload.addEventListener('progress', progressHandlingFunction, false); // for handling the progress of the upload
+	                myXhr.upload.addEventListener('progress', function(e) {
+	                	if(e.lengthComputable){
+								      $('progress').attr({value:e.loaded,max:e.total});
+								    }
+	                }, false); // for handling the progress of the upload
 	            }
 	            return myXhr;
 	        },
 	        //Ajax events
 	        beforeSend: function(jqXHR, settings) {
 	        	debug.log("beforeSend", jqXHR, settings);
+	        	jQuery("#loading").modal("show");
 				  },
 				  complete: function(jqXHR, settings) {
 				  	debug.log("complete", jqXHR, settings);
+				  	jQuery("#loading").modal("hide");
 				  },
 				  error: function(jqXHR, textStatus, errorThrown) {
 				  	debug.log("error", jqXHR, textStatus, errorThrown);
@@ -166,7 +173,21 @@ function(
 				  	debug.log("logsuccess", data, textStatus, jqXHR);
 
 				  	// Take the image
-				  	self.postedImageUrl(data.flickLink);
+				  	debug.log("bef self.postedImageUrl()", self.postedImageUrl(), "data", data);
+
+				  	var fbShare = "https://www.facebook.com/dialog/feed?" +
+  												"app_id=453184598071361&" +
+  												"link=http://kanika1901kapoor.github.com/The-Green-Trail-Project/application.html&" +
+  												"picture=" + data.data.flickLink + "&" +
+  												"name=The%20Green%20Trails%20Project&" +
+  												"caption=I%20was%20a%20green%20trail%20contributor!&" +
+  												"description=I%20was%20a%20green%20trail%20contributor!&" +
+  												"redirect_uri=about:blank"
+
+
+				  	self.postedImageUrl(fbShare);
+
+				  	debug.log("aft self.postedImageUrl()", self.postedImageUrl(), "data", data);
 
 				  	// Show modal dialog
 				  	$('#myModal').modal('show');
